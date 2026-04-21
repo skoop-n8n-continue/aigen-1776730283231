@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1920">
+  <title>Flower Tiers – Quality Roots</title>
+  <style>
+    @font-face {
+      font-family: 'Geomanist';
+      src: url('assets/fonts/Geomanist-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Geomanist';
+      src: url('assets/fonts/Geomanist-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Geomanist';
+      src: url('assets/fonts/Geomanist-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Geomanist';
+      src: url('assets/fonts/Geomanist-Bold-Italic.otf') format('opentype');
+      font-weight: 700;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'Geomanist';
+      src: url('assets/fonts/Geomanist-Black.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Geomanist';
+      src: url('assets/fonts/Geomanist-Black-Italic.otf') format('opentype');
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #1e3028;
+      font-family: 'Geomanist', 'Arial Black', sans-serif;
+    }
+
+    /* ─── BACKGROUND VIDEO ─────────────────────────────────── */
+    #bgVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+    }
+
+    /* ─── PRODUCT OVERLAY ──────────────────────────────────── */
+    #productOverlay {
+      position: absolute;
+      top: 156px;
+      left: 54px;
+      width: 1812px;
+      transform: translateY(960px);
+      opacity: 0;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      will-change: transform, opacity;
+    }
+
+    #productOverlay.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ─── MAIN TIERS TABLE ─────────────────────────────────── */
+    .tiers-table {
+      width: 1812px;
+      border-radius: 18px;
+      border: 3px solid #3a5c44;
+      overflow: hidden;
+      background: #253529;
+    }
+
+    /* Header Row */
+    .table-header {
+      display: flex;
+      height: 78px;
+      background: #253529;
+      border-bottom: 2px solid #3a5c44;
+    }
+
+    .header-icon-cell {
+      width: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .header-icon-cell img {
+      width: 52px;
+      height: auto;
+      filter: brightness(0.85);
+    }
+
+    .header-size-cell {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      font-weight: 700;
+      color: #ECE7D5;
+      letter-spacing: 0.01em;
+      border-left: 2px solid #3a5c44;
+    }
+
+    /* Tier Rows */
+    .tier-row {
+      display: flex;
+      height: 159px;
+      border-top: 2px solid #3a5c44;
+    }
+
+    .tier-num-cell {
+      width: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 152px;
+      font-weight: 900;
+      font-style: italic;
+      color: #ECE7D5;
+      background: #253529;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .prices-row {
+      flex: 1;
+      display: flex;
+      background: #ECE7D5;
+    }
+
+    .price-cell {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-left: 2.5px solid #8a8070;
+    }
+
+    /* ─── STRIKETHROUGH BADGE ──────────────────────────────── */
+    .strike-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2.5px solid #253529;
+      border-radius: 999px;
+      padding: 6px 18px 6px 14px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .strike-badge-inner {
+      display: inline-flex;
+      align-items: baseline;
+      font-weight: 700;
+      color: #1e2a20;
+    }
+
+    .strike-badge-dollar {
+      font-size: 19px;
+      vertical-align: super;
+      line-height: 0;
+      position: relative;
+      top: -4px;
+      margin-right: 1px;
+    }
+
+    .strike-badge-amount {
+      font-size: 31px;
+    }
+
+    /* The red diagonal slash */
+    .strike-badge::after {
+      content: '';
+      position: absolute;
+      left: -8%;
+      width: 116%;
+      height: 4px;
+      background: #d42010;
+      border-radius: 2px;
+      transform: rotate(-22deg);
+    }
+
+    /* ─── SALE PRICE ───────────────────────────────────────── */
+    .sale-price {
+      display: inline-flex;
+      align-items: baseline;
+      color: #1e2a20;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .sale-price sup {
+      font-size: 58px;
+      font-weight: 900;
+      font-style: italic;
+      vertical-align: top;
+      line-height: 1;
+      margin-top: 8px;
+    }
+
+    .sale-price-amount {
+      font-size: 128px;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 0.88;
+    }
+
+    /* ─── BULK BOXES ───────────────────────────────────────── */
+    .bulk-row {
+      display: flex;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .bulk-box {
+      flex: 1;
+      height: 155px;
+      background: #253529;
+      border: 3px solid #3a5c44;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 0 40px;
+    }
+
+    .bulk-label {
+      font-size: 62px;
+      font-weight: 900;
+      font-style: italic;
+      color: #A8C37E;
+      line-height: 1.05;
+      text-transform: uppercase;
+      text-align: left;
+      flex-shrink: 0;
+    }
+
+    .bulk-price-group {
+      display: inline-flex;
+      align-items: baseline;
+      color: #ECE7D5;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1;
+    }
+
+    .bulk-price-group sup {
+      font-size: 44px;
+      font-weight: 900;
+      font-style: italic;
+      vertical-align: top;
+      line-height: 1;
+      margin-top: 6px;
+    }
+
+    .bulk-price-num {
+      font-size: 98px;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 0.9;
+    }
+
+    .bulk-price-unit {
+      font-size: 40px;
+      font-weight: 900;
+      font-style: italic;
+      vertical-align: bottom;
+      margin-bottom: 8px;
+      margin-left: 2px;
+    }
+
+    .bulk-divider {
+      font-size: 90px;
+      font-weight: 300;
+      color: #4a7055;
+      line-height: 1;
+      align-self: center;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Template video as background (includes intro animation → FLOWER TIERS backdrop) -->
+  <video id="bgVideo" autoplay muted playsinline>
+    <source src="https://skoop-general.s3.us-east-1.amazonaws.com/1776730367589-template_blank_tiers.mp4" type="video/mp4">
+  </video>
+
+  <!-- Product data overlay (slides in after intro) -->
+  <div id="productOverlay">
+
+    <!-- ─── MAIN TIERS TABLE ─────────────────────────────── -->
+    <div class="tiers-table">
+
+      <!-- Header Row -->
+      <div class="table-header">
+        <div class="header-icon-cell">
+          <img src="assets/logos/QR_Icon_White.png" alt="QR">
+        </div>
+        <div class="header-size-cell">&#x00B9;&#x2044;&#x2088;</div>
+        <div class="header-size-cell">&#x00B9;&#x2044;&#x2084;</div>
+        <div class="header-size-cell">&#x00B9;&#x2044;&#x2082;</div>
+        <div class="header-size-cell">OZ</div>
+      </div>
+
+      <!-- Tier 1 -->
+      <div class="tier-row">
+        <div class="tier-num-cell">1</div>
+        <div class="prices-row">
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">25</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">22</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">45</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">40</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">75</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">70</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">140</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">120</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="tier-row">
+        <div class="tier-num-cell">2</div>
+        <div class="prices-row">
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">20</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">18</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">35</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">30</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">65</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">60</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">120</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">100</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="tier-row">
+        <div class="tier-num-cell">3</div>
+        <div class="prices-row">
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">15</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">13</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">30</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">25</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">55</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">50</span></span>
+          </div>
+          <div class="price-cell">
+            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">100</span></span></span>
+            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">90</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .tiers-table -->
+
+    <!-- ─── BULK PRICING BOXES ───────────────────────────── -->
+    <div class="bulk-row">
+
+      <div class="bulk-box">
+        <div class="bulk-label">BULK<br>100</div>
+        <span class="bulk-price-group"><sup>$</sup><span class="bulk-price-num">45</span><span class="bulk-price-unit">½</span></span>
+        <span class="bulk-divider">|</span>
+        <span class="bulk-price-group"><sup>$</sup><span class="bulk-price-num">80</span><span class="bulk-price-unit">oz</span></span>
+      </div>
+
+      <div class="bulk-box">
+        <div class="bulk-label">REGULAR<br>BULK</div>
+        <span class="bulk-price-group"><sup>$</sup><span class="bulk-price-num">50</span><span class="bulk-price-unit">½</span></span>
+        <span class="bulk-divider">|</span>
+        <span class="bulk-price-group"><sup>$</sup><span class="bulk-price-num">90</span><span class="bulk-price-unit">oz</span></span>
+      </div>
+
+    </div><!-- end .bulk-row -->
+
+  </div><!-- end #productOverlay -->
+
+  <script>
+    const video = document.getElementById('bgVideo');
+    const overlay = document.getElementById('productOverlay');
+    let shown = false;
+
+    video.addEventListener('timeupdate', function () {
+      if (video.currentTime >= 5.5 && !shown) {
+        shown = true;
+        overlay.classList.add('visible');
+      }
+    });
+
+    video.addEventListener('ended', function () {
+      // Hide instantly (before video rewinds) so the intro covers the removal
+      overlay.style.transition = 'none';
+      overlay.classList.remove('visible');
+      shown = false;
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          overlay.style.transition = '';
+          video.currentTime = 0;
+          video.play();
+        });
+      });
+    });
+
+    // Autoplay fallback
+    video.play().catch(() => {
+      document.addEventListener('click', () => video.play(), { once: true });
+    });
+  </script>
+</body>
+</html>
