@@ -128,26 +128,34 @@
       border-left: 2px solid #3a5c44;
     }
 
-    /* Stacked fraction in header */
+    /* Diagonal slash fraction in header */
     .frac {
       display: inline-flex;
-      flex-direction: column;
-      align-items: center;
+      flex-direction: row;
+      align-items: baseline;
       font-family: 'Geomanist', 'Arial Black', sans-serif;
       font-weight: 700;
-      font-size: 30px;
       color: #ECE7D5;
       line-height: 1;
-      gap: 2px;
+      font-size: 36px;
     }
-    .frac-num { line-height: 1; }
-    .frac-line {
-      width: 100%;
-      height: 3px;
-      background: #ECE7D5;
-      border-radius: 1px;
+    .frac-num {
+      font-size: 0.65em;
+      vertical-align: super;
+      line-height: 0;
+      font-family: 'Geomanist', 'Arial Black', sans-serif;
     }
-    .frac-den { line-height: 1; }
+    .frac-slash {
+      font-size: 1em;
+      margin: 0 1px;
+      font-family: 'Geomanist', 'Arial Black', sans-serif;
+    }
+    .frac-den {
+      font-size: 0.65em;
+      vertical-align: sub;
+      line-height: 0;
+      font-family: 'Geomanist', 'Arial Black', sans-serif;
+    }
 
     /* Tier Rows */
     .tier-row {
@@ -350,9 +358,9 @@
         <div class="header-icon-cell">
           <img src="assets/logos/QR_Icon_White.png" alt="QR">
         </div>
-        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-line"></span><span class="frac-den">8</span></span></div>
-        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-line"></span><span class="frac-den">4</span></span></div>
-        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-line"></span><span class="frac-den">2</span></span></div>
+        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">8</span></span></div>
+        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">4</span></span></div>
+        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">2</span></span></div>
         <div class="header-size-cell">OZ</div>
       </div>
 
