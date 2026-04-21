@@ -70,10 +70,10 @@
     /* ─── PRODUCT OVERLAY ──────────────────────────────────── */
     #productOverlay {
       position: absolute;
-      top: 156px;
-      left: 54px;
-      width: 1812px;
-      padding-top: 28px;
+      top: 150px;
+      left: 50px;
+      width: 1820px;
+      padding-top: 22px;
       transform: translateY(960px);
       opacity: 0;
       transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
@@ -85,11 +85,20 @@
       opacity: 1;
     }
 
+    /* ─── OUTER FRAME (dark green border → white inner border) ── */
+    .tiers-table-outer {
+      width: 1820px;
+      border-radius: 24px;
+      background: #253529;
+      padding: 9px;
+      overflow: hidden;
+    }
+
     /* ─── MAIN TIERS TABLE ─────────────────────────────────── */
     .tiers-table {
-      width: 1812px;
-      border-radius: 18px;
-      border: 3px solid #3a5c44;
+      width: 100%;
+      border-radius: 15px;
+      border: 3px solid rgba(255,255,255,0.78);
       overflow: hidden;
       background: #253529;
     }
@@ -97,13 +106,13 @@
     /* Header Row */
     .table-header {
       display: flex;
-      height: 78px;
+      height: 82px;
       background: #253529;
-      border-bottom: 2px solid #3a5c44;
+      border-bottom: 2.5px solid rgba(255,255,255,0.75);
     }
 
     .header-icon-cell {
-      width: 140px;
+      width: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -111,9 +120,9 @@
     }
 
     .header-icon-cell img {
-      width: 52px;
+      width: 50px;
       height: auto;
-      filter: brightness(0.85);
+      opacity: 0.88;
     }
 
     .header-size-cell {
@@ -121,11 +130,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 700;
       color: #ECE7D5;
       letter-spacing: 0.01em;
-      border-left: 2px solid #3a5c44;
+      border-left: 2.5px solid rgba(255,255,255,0.75);
     }
 
     /* Diagonal slash fraction in header */
@@ -137,12 +146,12 @@
       font-weight: 700;
       color: #ECE7D5;
       line-height: 1;
-      font-size: 36px;
+      font-size: 40px;
     }
     .frac-num {
-      font-size: 0.65em;
+      font-size: 0.60em;
       position: relative;
-      top: -0.45em;
+      top: -0.52em;
       line-height: 0;
       font-family: 'Geomanist', 'Arial Black', sans-serif;
     }
@@ -152,9 +161,9 @@
       font-family: 'Geomanist', 'Arial Black', sans-serif;
     }
     .frac-den {
-      font-size: 0.65em;
+      font-size: 0.60em;
       position: relative;
-      top: 0.45em;
+      top: 0.52em;
       line-height: 0;
       font-family: 'Geomanist', 'Arial Black', sans-serif;
     }
@@ -163,11 +172,11 @@
     .tier-row {
       display: flex;
       height: 192px;
-      border-top: 2px solid #3a5c44;
+      border-top: 2.5px solid rgba(255,255,255,0.75);
     }
 
     .tier-num-cell {
-      width: 140px;
+      width: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -178,6 +187,7 @@
       background: #253529;
       flex-shrink: 0;
       line-height: 1;
+      overflow: visible;
     }
 
     .prices-row {
@@ -191,8 +201,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      border-left: 2.5px solid #8a8070;
+      gap: 12px;
+      border-left: 2px solid rgba(110, 98, 78, 0.35);
+    }
+
+    /* first price cell separates dark green tier column from beige area → white */
+    .price-cell:first-child {
+      border-left: 2.5px solid rgba(255,255,255,0.75);
     }
 
     /* ─── STRIKETHROUGH BADGE ──────────────────────────────── */
@@ -203,7 +218,7 @@
       justify-content: center;
       border: 2.5px solid #253529;
       border-radius: 999px;
-      padding: 6px 18px 6px 14px;
+      padding: 7px 20px 7px 16px;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -216,26 +231,24 @@
     }
 
     .strike-badge-dollar {
-      font-size: 19px;
-      vertical-align: super;
-      line-height: 0;
+      font-size: 18px;
       position: relative;
-      top: -4px;
+      top: -5px;
       margin-right: 1px;
     }
 
     .strike-badge-amount {
-      font-size: 31px;
+      font-size: 30px;
     }
 
-    /* The red diagonal slash */
+    /* Red diagonal slash */
     .strike-badge::after {
       content: '';
       position: absolute;
-      left: -8%;
-      width: 116%;
+      left: -6%;
+      width: 112%;
       height: 4px;
-      background: #d42010;
+      background: #c8200e;
       border-radius: 2px;
       transform: rotate(-22deg);
     }
@@ -252,16 +265,16 @@
     }
 
     .sale-price sup {
-      font-size: 58px;
+      font-size: 56px;
       font-weight: 900;
       font-style: italic;
       vertical-align: top;
       line-height: 1;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .sale-price-amount {
-      font-size: 128px;
+      font-size: 130px;
       font-weight: 900;
       font-style: italic;
       line-height: 0.88;
@@ -270,25 +283,25 @@
     /* ─── BULK BOXES ───────────────────────────────────────── */
     .bulk-row {
       display: flex;
-      gap: 18px;
-      margin-top: 18px;
+      gap: 16px;
+      margin-top: 16px;
     }
 
     .bulk-box {
       flex: 1;
-      height: 178px;
+      height: 175px;
       background: #253529;
-      border: 3px solid #3a5c44;
+      border: 3px solid #4e7a5a;
       border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 22px;
+      gap: 24px;
       padding: 0 40px;
     }
 
     .bulk-label {
-      font-size: 62px;
+      font-size: 60px;
       font-weight: 900;
       font-style: italic;
       color: #A8C37E;
@@ -308,37 +321,37 @@
     }
 
     .bulk-price-group sup {
-      font-size: 44px;
+      font-size: 42px;
       font-weight: 900;
       font-style: italic;
       vertical-align: top;
       line-height: 1;
-      margin-top: 6px;
+      margin-top: 8px;
     }
 
     .bulk-price-num {
-      font-size: 98px;
+      font-size: 96px;
       font-weight: 900;
       font-style: italic;
       line-height: 0.9;
     }
 
     .bulk-price-unit {
-      font-size: 40px;
+      font-size: 38px;
       font-weight: 900;
       font-style: italic;
       vertical-align: bottom;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       margin-left: 2px;
     }
 
     .bulk-divider {
-      font-size: 90px;
+      font-size: 88px;
       font-weight: 300;
-      color: #4a7055;
+      color: rgba(255,255,255,0.35);
       line-height: 1;
       align-self: center;
-      margin: 0 8px;
+      margin: 0 6px;
     }
   </style>
 </head>
@@ -352,90 +365,92 @@
   <!-- Product data overlay (slides in after intro) -->
   <div id="productOverlay">
 
-    <!-- ─── MAIN TIERS TABLE ─────────────────────────────── -->
-    <div class="tiers-table">
+    <!-- ─── OUTER DARK FRAME → INNER WHITE BORDER → CELLS ──── -->
+    <div class="tiers-table-outer">
+      <div class="tiers-table">
 
-      <!-- Header Row -->
-      <div class="table-header">
-        <div class="header-icon-cell">
-          <img src="assets/logos/QR_Icon_White.png" alt="QR">
+        <!-- Header Row -->
+        <div class="table-header">
+          <div class="header-icon-cell">
+            <img src="assets/logos/QR_Icon_White.png" alt="QR">
+          </div>
+          <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">8</span></span></div>
+          <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">4</span></span></div>
+          <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">2</span></span></div>
+          <div class="header-size-cell">OZ</div>
         </div>
-        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">8</span></span></div>
-        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">4</span></span></div>
-        <div class="header-size-cell"><span class="frac"><span class="frac-num">1</span><span class="frac-slash">/</span><span class="frac-den">2</span></span></div>
-        <div class="header-size-cell">OZ</div>
-      </div>
 
-      <!-- Tier 1 -->
-      <div class="tier-row">
-        <div class="tier-num-cell">1</div>
-        <div class="prices-row">
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">25</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">22</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">45</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">40</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">75</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">70</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">140</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">120</span></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tier 2 -->
-      <div class="tier-row">
-        <div class="tier-num-cell">2</div>
-        <div class="prices-row">
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">20</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">18</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">35</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">30</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">65</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">60</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">120</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">100</span></span>
+        <!-- Tier 1 -->
+        <div class="tier-row">
+          <div class="tier-num-cell">1</div>
+          <div class="prices-row">
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">25</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">22</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">45</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">40</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">75</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">70</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">140</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">120</span></span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Tier 3 -->
-      <div class="tier-row">
-        <div class="tier-num-cell">3</div>
-        <div class="prices-row">
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">15</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">13</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">30</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">25</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">55</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">50</span></span>
-          </div>
-          <div class="price-cell">
-            <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">100</span></span></span>
-            <span class="sale-price"><sup>$</sup><span class="sale-price-amount">90</span></span>
+        <!-- Tier 2 -->
+        <div class="tier-row">
+          <div class="tier-num-cell">2</div>
+          <div class="prices-row">
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">20</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">18</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">35</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">30</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">65</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">60</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">120</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">100</span></span>
+            </div>
           </div>
         </div>
-      </div>
 
-    </div><!-- end .tiers-table -->
+        <!-- Tier 3 -->
+        <div class="tier-row">
+          <div class="tier-num-cell">3</div>
+          <div class="prices-row">
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">15</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">13</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">30</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">25</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">55</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">50</span></span>
+            </div>
+            <div class="price-cell">
+              <span class="strike-badge"><span class="strike-badge-inner"><span class="strike-badge-dollar">$</span><span class="strike-badge-amount">100</span></span></span>
+              <span class="sale-price"><sup>$</sup><span class="sale-price-amount">90</span></span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end .tiers-table -->
+    </div><!-- end .tiers-table-outer -->
 
     <!-- ─── BULK PRICING BOXES ───────────────────────────── -->
     <div class="bulk-row">
@@ -471,7 +486,6 @@
     });
 
     video.addEventListener('ended', function () {
-      // Hide instantly (before video rewinds) so the intro covers the removal
       overlay.style.transition = 'none';
       overlay.classList.remove('visible');
       shown = false;
@@ -485,7 +499,6 @@
       });
     });
 
-    // Autoplay fallback
     video.play().catch(() => {
       document.addEventListener('click', () => video.play(), { once: true });
     });
